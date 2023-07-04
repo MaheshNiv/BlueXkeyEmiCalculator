@@ -1,0 +1,57 @@
+<div class="container">
+    <h2 >EMI Calculator</h2>
+    <div class="form-group">
+      <label for="loan-amount">Loan Amount:</label>
+      <input type="number" id="loan-amount" class="form-control" [(ngModel)]="loanAmount" (input)="calculateEMI()" />
+    </div>
+    <div class="form-group">
+      <label for="interest-rate">Interest Rate:</label>
+      <input type="number" id="interest-rate" class="form-control" [(ngModel)]="interestRate" (input)="calculateEMI()" />
+    </div>
+    <div class="form-group">
+      <label for="loan-tenure">Loan Tenure (in years):</label>
+      <input type="number" id="loan-tenure" class="form-control" [(ngModel)]="loanTenure" (input)="calculateEMI()" />
+    </div>
+    <br>
+    <hr>
+    <div class="result">
+        <label>Loan EMI:</label>
+        <span>{{ loanEMI }}</span>
+      </div>
+      <div class="result">
+        <label>Total Interest Payable:</label>
+        <span>{{ totalInterestPayable }}</span>
+      </div>
+      <div class="result">
+        <label>Total Payment (Principal + Interest):</label>
+        <span>{{ totalPayment }}</span>
+      </div>
+    <br>
+    <hr>
+    <h3>EMI Details:</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Month - Year</th>
+          <th>Principal</th>
+          <th>Interest</th>
+          <th>Total Payment (P+I)</th>
+          <th>Balance</th>
+          <th>Loan Paid To Date (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emiDetail of emiDetails">
+          <td>{{ emiDetail.monthYear }}</td>
+          <td>{{ emiDetail.principal }}</td>
+          <td>{{ emiDetail.interest }}</td>
+          <td>{{ emiDetail.totalPayment }}</td>
+          <td>{{ emiDetail.balance }}</td>
+          <td>{{ emiDetail.loanPaidToDate }} %</td>
+        </tr>
+      </tbody>
+    </table>
+    
+   
+  </div>
+  
